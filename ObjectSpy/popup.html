@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="check_variables.js"></script>
+		<style>
+		*{font-size:12px;font-color:#fff;font-family:Arial,Verdana,Sans-serif;line-height:25px;}
+		div{width:400px;}
+		#headDiv{background-color:#0667af;color:#fff;line-height:35px;}
+		#headDiv span{float:right;position:relative;top:8px;right:10px;}
+		#insDiv{background-color:#fff;color:#008dff;}
+		#propertyDiv{font-style:italic;background-color:#fbefdd;color:#000;display:none;border:2px #e1e4cb solid;position:absolute;z-index:5;top:42px;}
+		input[type='text']{line-height:14px;}
+		input[type='button']{line-height:18px;background-color:#2196f3;color:#fff;border:none;outline: none;border-radius:2px;box-sizing: border-box;}
+
+        .switch_checkbox {display: none;}
+
+        .switch_label {
+        	box-shadow: #ccc 0px 0px 0px 1px;
+            width: 40px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 20px;
+            position: relative;
+            background-color: #ccbcc3;
+            overflow: hidden;
+        }
+
+        .switch_label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 20px;
+            background-color: #fff;
+            z-index: 20;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        .switch_checkbox:checked + label.switch_label:before {left: 20px;}
+        .switch_checkbox:checked + label.switch_label {background-color: #36fb08;}
+        
+		</style>
+	</head>
+	<body>
+		<div id="headDiv">
+			<b>Object Spy for webdriver</b> - isDisplayed needed
+			<span>
+				<input type="checkbox" id="switch" class="switch_checkbox" />
+				<label for="switch" class="switch_label"></label>
+			</span>
+			<br>
+		</div>
+		<div id="insDiv">
+			1、按下" ` "键，会自动锁定对象，再按" ` "键释放对象<br>
+			2、鼠标不动，按功能键" &uarr; ",会自动定位父元素.<br>
+			3、定位方式优先级：单一属性 > 双属性 > 级联路径<br>
+			4、特殊情况：鼠标移动发生属性改变的，需要自己判断<br>
+		</div>
+		<input type="button" id="optionBtn" value="设置"/>
+		<div id="propertyDiv">
+			<span>设置属性过滤, 逗号隔开, 不要空格：</span><br>
+			<input type="text" id="attrFilter"/><br>
+			<span>设置属性值最大长度过滤：</span><br>
+			<input type="text" id="maxLength"/><br>
+			<input type="button" id="saveBtn" value="保存"/>
+		</div>
+		<script src="popup.js"></script>
+	</body>
+</html>
